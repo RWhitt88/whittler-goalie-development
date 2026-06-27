@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whittler Goalie Development | Elite Goalie Coaching</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0a2540;
+            --ice: #00d4ff;
+            --dark: #0f172a;
+            --slate: #1e2937;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--dark);
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        
+        .navbar {
+            background: rgba(10, 37, 64, 0.98);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--ice);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover { color: var(--ice); }
+        
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 6%;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--ice);
+            padding: 10px 28px;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 4.2rem;
+            line-height: 1.05;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 620px;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s;
+        }
+        
+        .btn-primary {
+            background: var(--ice);
+            color: #0f172a;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -5px rgba(0, 212, 255, 0.5);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 3px solid var(--ice);
+        }
+        
+        section {
+            padding: 120px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #e2e8f0, var(--ice));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about { background: var(--slate); }
+        .programs { background: #0a1421; }
+        .resources { background: var(--slate); }
+        .testimonials { background: #0a1421; }
+        .contact { background: linear-gradient(135deg, #0a2540, #1e3a5f); }
+        
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .card {
+            background: var(--slate);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px -15px rgba(0, 212, 255, 0.25);
+        }
+        
+        .camp-pricing {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+        
+        .camp-box {
+            background: var(--slate);
+            padding: 2.5rem 3rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 260px;
+        }
+        
+        form {
+            max-width: 620px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 3rem;
+            border-radius: 24px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 18px;
+            background: #1e2937;
+            border: 2px solid #475569;
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            background: #02060f;
+            padding: 5rem 6% 3rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">WHITTLER GOALIE</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#testimonials">Stories</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">AAA • JUNIOR • PRO PATHWAY</div>
+            <h1>Train Like an Elite Goalie.<br>Play Like One Too.</h1>
+            <p>Modern crease development with Richard Whittler — tall, left-catching goalie with proven AAA experience and elite performance.</p>
+            
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Book Private Lessons</a>
+                <a href="#programs" class="btn btn-outline">View Programs</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About Richard Whittler</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+            <div>
+                <h3 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Proven Competitor. Dedicated Coach.</h3>
+                <p style="font-size: 1.25rem;">Richard Whittler brings AAA-level experience and elite technical knowledge to every session. Known for strong positioning, quick reads, and consistency under pressure.</p>
+            </div>
+            <div style="background: #02060f; padding: 3rem; border-radius: 20px; border: 2px solid var(--ice);">
+                <h4 style="color: var(--ice);">Key Strengths</h4>
+                <ul style="margin-top: 1.5rem; line-height: 2.2;">
+                    <li>Modern crease efficiency</li>
+                    <li>Strong angle play</li>
+                    <li>High hockey IQ</li>
+                    <li>Mental toughness development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="programs">
+        <div class="section-header">
+            <h2>Training Programs</h2>
+        </div>
+        
+        <div class="program-cards">
+            <div class="card">
+                <div style="background: linear-gradient(135deg, #0a2540, #1e4066); padding: 2.5rem; text-align: center;">
+                    <h3>Private 1-on-1 Lessons</h3>
+                    <div style="font-size: 3.5rem; font-weight: 900;">$60</div>
+                    <div style="color:#94a3b8;">per hour</div>
+                </div>
+                <div style="padding: 2.5rem;">
+                    <ul style="list-style: none;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid #334155;">Skating &amp; Edgework</li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #334155;">Positioning &amp; Angles</li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #334155;">Rebound Control</li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #334155;">Game Situations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center; margin-top:2rem;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="background: linear-gradient(135deg, #0a2540, #1e4066); padding: 2.5rem; text-align: center;">
+                    <h3>Video Review Service</h3>
+                    <div style="font-size: 3.5rem; font-weight: 900;">$25</div>
+                    <div style="color:#94a3b8;">per game</div>
+                </div>
+                <div style="padding: 2.5rem;">
+                    <p style="margin: 1.5rem 0;">Detailed breakdown with timestamped feedback and improvement plan.</p>
+                    <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Submit Footage</a>
+                </div>
+            </div>
+        </div>
+        
+        <h3 style="text-align:center; margin: 5rem 0 2rem; font-size: 2.2rem;">Goalie Camps &amp; Clinics</h3>
+        <div class="camp-pricing">
+            <div class="camp-box">$80 — One-Day Clinic</div>
+            <div class="camp-box">$200 — Weekend Camp</div>
+            <div class="camp-box">$450 — Elite Multi-Day</div>
+        </div>
+    </section>
+
+    <section id="resources" class="resources">
+        <div class="section-header">
+            <h2>Free Resources</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <div style="background:#0f172a; padding: 2.5rem; border-radius: 16px;">
+                <h4>Elite Positioning Guide</h4>
+                <p>Learn modern crease principles used by top goalies.</p>
+            </div>
+            <div style="background:#0f172a; padding: 2.5rem; border-radius: 16px;">
+                <h4>Rebound Control Drills</h4>
+                <p>Keep second chances out of your net.</p>
+            </div>
+            <div style="background:#0f172a; padding: 2.5rem; border-radius: 16px;">
+                <h4>Mental Toughness</h4>
+                <p>Stay calm and confident in big moments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <h2>What Goalies Say</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;">
+            <div style="background: var(--slate); padding: 2.5rem; border-radius: 20px;">"My positioning and confidence improved dramatically after working with Richard." — Tyler M.</div>
+            <div style="background: var(--slate); padding: 2.5rem; border-radius: 20px;">"The best video analysis I've ever received. Highly recommend!" — Sophia K.</div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2>Ready to Improve?</h2>
+        </div>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="6" placeholder="Tell us about your goals..."></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%; padding:20px; font-size:1.3rem;">Send Message</button>
+        </form>
+        <p style="text-align:center; margin-top:2rem;">coach@whittlergoalie.com</p>
+    </section>
+
+    <footer>
+        <p style="font-size:2rem; font-weight:900;">WHITTLER GOALIE DEVELOPMENT</p>
+        <p>© 2026 • All Rights Reserved</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault();
+            alert("Thank you! Richard will reply within 24 hours.");
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
